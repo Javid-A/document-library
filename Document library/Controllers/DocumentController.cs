@@ -15,7 +15,7 @@ namespace Document_library.Controllers
         [HttpPost("upload")]
         public async Task<IActionResult> Upload([FromForm] IFormFileCollection files)
         {
-            var uploadedFiles = await s3Service.UploadFilesAsync(files);
+            var uploadedFiles = await s3Service.UploadFilesAsync(files,User.Identity.Name);
             return Ok(uploadedFiles);
         }
         [HttpGet("download")]
