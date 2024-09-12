@@ -1,25 +1,25 @@
-﻿using Document_library.DAL.Entities;
-using Document_library.DTOs;
-using Document_library.Services.Interfaces;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
 
 namespace Document_library.Services.Implementations
 {
-    public class AccountService(IConfiguration configuration,UserManager<User> userManager) : IAccountService
+    public class AccountService(IConfiguration configuration, UserManager<User> userManager) : IAccountService
     {
         public Task<UserDTO> GetUserAsync(string email)
         {
             throw new NotImplementedException();
         }
 
-        //Configure JWT token
-        public async Task<string> LoginAsync(string email, string password)
+        public async Task<ServiceResult<string>> LoginAsync(LoginDTO model)
         {
-            User existedUser = await userManager.FindByEmailAsync(email) ?? throw new ArgumentNullException("User was not found");
+            User? existedUser = await userManager.FindByEmailAsync(model.Email);
+            if (existedUser == null) return ServiceResult<string>.Failed("User not found");
+
+            bool isPasswordValid = await userManager.CheckPasswordAsync(existedUser, model.Password);
+            if (!isPasswordValid) return ServiceResult<string>.Failed("Invalid password or email");
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(configuration["Jwt:Key"]!);
@@ -29,31 +29,26 @@ namespace Document_library.Services.Implementations
                 Subject = new ClaimsIdentity(
                 [
                     new Claim(ClaimTypes.Email, existedUser.Email!),
-                new Claim(ClaimTypes.NameIdentifier, existedUser.Id.ToString())
+                    new Claim(ClaimTypes.NameIdentifier, existedUser.Id),
+                    new Claim(ClaimTypes.Name, existedUser.UserName!)
                 ]),
-                Expires = DateTime.UtcNow.AddMinutes(30),
+                Expires = DateTime.UtcNow.AddMinutes(int.Parse(configuration["Jwt:ExpireMinutes"]!)),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
 
                 Issuer = configuration["Jwt:Issuer"],
                 Audience = configuration["Jwt:Audience"]
             };
-            var roles = await userManager.GetRolesAsync(existedUser);
-            roles.ToList().ForEach(role =>
-            {
-                tokenDescriptor.Subject.AddClaim(new Claim(ClaimTypes.Role, role));
-            });
-
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
-            return tokenHandler.WriteToken(token);
+
+            return ServiceResult<string>.Success(tokenHandler.WriteToken(token));
         }
 
-        public async Task RegisterAsync(RegisterDTO model)
+        public async Task<ServiceResult> RegisterAsync(RegisterDTO model)
         {
-            User user = await userManager.FindByEmailAsync(model.Email);
+            User? user = await userManager.FindByNameAsync(model.UserName);
 
-            //If email is not already taken still there is a chance that username is taken
-            if (user != null) throw new ArgumentNullException("email"); ;
+            if (user != null) return ServiceResult.Failed("User already exists");
 
             user = new User
             {
@@ -63,11 +58,9 @@ namespace Document_library.Services.Implementations
 
             IdentityResult result = await userManager.CreateAsync(user, model.Password);
 
-            //return result errors not throw exception
-            if (!result.Succeeded) throw new Exception("User was not created");
+            if (!result.Succeeded) return ServiceResult.Failed(result.Errors.Select(x => x.Description).ToArray());
 
-            IdentityResult resultRole = await userManager.AddToRoleAsync(user, "Member");
-            if (!resultRole.Succeeded) throw new Exception("User was not added to role");
+            return ServiceResult.Success();
         }
     }
 }

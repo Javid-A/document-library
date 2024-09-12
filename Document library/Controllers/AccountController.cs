@@ -1,18 +1,29 @@
-﻿using Document_library.DTOs;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Document_library.Services;
 
 namespace Document_library.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountController(IAccountService accountService) : ControllerBase
     {
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterDTO model)
         {
+            ServiceResult result =  await accountService.RegisterAsync(model);
 
-            return Ok();
+            if (!result.Succeeded) return BadRequest(result.Errors);
+
+            return Created();
+        }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginDTO model)
+        {
+            ServiceResult<string> result = await accountService.LoginAsync(model);
+
+            if (!result.Succeeded) return BadRequest(result.Errors);
+
+            return Ok(result.Data);
         }
     }
 }

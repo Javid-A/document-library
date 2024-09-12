@@ -10,7 +10,7 @@ using System.Text;
 
 namespace Document_library.Services.Implementations
 {
-    public class S3Service(IAmazonS3 amazonS3, DocumentDB context, UserManager<User> userManager) : IS3Service
+    public class S3Service(ILoggingService logginService,IAmazonS3 amazonS3, DocumentDB context, UserManager<User> userManager) : IS3Service
     {
         private readonly string _bucketName = "document-library-system";
         public async Task<Stream> DownloadFileAsync(string fileName)
@@ -38,12 +38,13 @@ namespace Document_library.Services.Implementations
             throw new Exception();
         }
 
-        public async Task<IList<string>> UploadFilesAsync(IFormFileCollection files, string userName)
+        public async Task<ServiceResult<IList<string>>> UploadFilesAsync(IFormFileCollection files, string userName)
         {
             IList<string> failedFiles = [];
             try
             {
-                //User user = await userManager.FindByNameAsync(userName) ?? throw new Exception("User was not found");
+                User user = await userManager.FindByNameAsync(userName);
+                if (user == null) return ServiceResult<IList<string>>.Failed("User not found");
                 foreach (IFormFile file in files)
                 {
                     var keyWithFolder = $"{userName}/{file.FileName}";
@@ -57,58 +58,33 @@ namespace Document_library.Services.Implementations
                     };
 
                     PutObjectResponse s3 = await amazonS3.PutObjectAsync(putRequest);
-                    if (s3.HttpStatusCode != System.Net.HttpStatusCode.OK) failedFiles.Add(file.FileName);
-
-                    //Document document = new() { Name = file.FileName, Path = keyWithFolder, Type = Path.GetExtension(file.FileName), User = user };
-                    //await context.Documents.AddAsync(document);
+                    if (s3.HttpStatusCode != System.Net.HttpStatusCode.OK)
+                    {
+                        failedFiles.Add(file.FileName);
+                    }
+                    else
+                    {
+                        Document document = new() { Name = file.FileName, Path = keyWithFolder, Type = Path.GetExtension(file.FileName), User = user };
+                        await context.Documents.AddAsync(document);
+                    }
                 }
-                return failedFiles;
+                await context.SaveChangesAsync();
+
+                //If there are any failed files, return a partial success result
+                if (failedFiles.Any())
+                {
+                    var failedFilesMessage = "Some files failed to upload: " + string.Join(", ", failedFiles);
+                    return ServiceResult<IList<string>>.Success(failedFiles).WithMessage(failedFilesMessage);
+                }
+
+                //If all files were uploaded successfully, return a success result
+                return ServiceResult<IList<string>>.Success(failedFiles);
             }
             catch (Exception ex)
             {
-                LogError(ex.Message, ex.StackTrace!);
-                return failedFiles;
+                await logginService.LogErrorAsync(ex.Message, ex.StackTrace!);
+                return ServiceResult<IList<string>>.Failed("An error occurred while uploading files");
             }
-        }
-
-        private async void LogError(string message, string stackTrace)
-        {
-            string content = string.Empty;
-            string fileContent = message + $"\t{DateTime.UtcNow.TimeOfDay.ToString("hh\\:mm\\:ss")} \n{stackTrace ?? "There is no trace"}";
-            string filePath = $"Errors/{DateTime.UtcNow.Date:dd.MM.yyyy}.txt";
-            var listRequest = new ListObjectsV2Request
-            {
-                BucketName = _bucketName,
-                Prefix = filePath,
-                MaxKeys = 1
-            };
-            var response = await amazonS3.ListObjectsV2Async(listRequest);
-
-            if (response.S3Objects.Count > 0)
-            {
-                var file = response.S3Objects.First();
-
-                var responseStream = await amazonS3.GetObjectAsync(_bucketName, file.Key);
-
-                using var reader = new StreamReader(responseStream.ResponseStream);
-                content = await reader.ReadToEndAsync();
-                content += Environment.NewLine + fileContent;
-            }
-            else
-            {
-                content = fileContent;
-            }
-            using var memoryStream = new MemoryStream(Encoding.UTF8.GetBytes(content));
-
-            var request = new PutObjectRequest
-            {
-                BucketName = _bucketName,
-                Key = $"Errors/{DateTime.UtcNow.Date:dd.MM.yyyy}.txt",
-                InputStream = memoryStream,
-                ContentType = "text/plain"
-            };
-
-            await amazonS3.PutObjectAsync(request);
         }
     }
 }

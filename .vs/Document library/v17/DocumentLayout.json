@@ -3,34 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\Lenovo\\source\\repos\\Document library\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\services\\implementations\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\services\\implementations\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\services\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\services\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\dtos\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\dal\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\dal\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\services\\implementations\\s3service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\services\\implementations\\s3service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -39,24 +11,44 @@
       "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\controllers\\documentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\services\\serviceresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\services\\serviceresult.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\services\\implementations\\loggingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\services\\implementations\\loggingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\services\\interfaces\\is3service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\services\\interfaces\\is3service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\dal\\entities\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\dal\\entities\\document.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\services\\interfaces\\iloggingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\services\\interfaces\\iloggingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\dal\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\dal\\entities\\baseentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\dal\\documentdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\dal\\documentdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\services\\implementations\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\services\\implementations\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|c:\\users\\lenovo\\source\\repos\\document library\\document library\\services\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{862BD731-C0D4-4827-B7EB-A7E45ED88C79}|Document library\\Document library.csproj|solutionrelative:document library\\services\\interfaces\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -66,7 +58,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 327,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
@@ -94,183 +86,158 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AccountService.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Implementations\\AccountService.cs",
-              "RelativeDocumentMoniker": "Document library\\Services\\Implementations\\AccountService.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Implementations\\AccountService.cs",
-              "RelativeToolTip": "Document library\\Services\\Implementations\\AccountService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T16:08:44.16Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DTOs\\UserDTO.cs",
-              "RelativeDocumentMoniker": "Document library\\DTOs\\UserDTO.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DTOs\\UserDTO.cs",
-              "RelativeToolTip": "Document library\\DTOs\\UserDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T16:04:56.593Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IAccountService.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Interfaces\\IAccountService.cs",
-              "RelativeDocumentMoniker": "Document library\\Services\\Interfaces\\IAccountService.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Interfaces\\IAccountService.cs",
-              "RelativeToolTip": "Document library\\Services\\Interfaces\\IAccountService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAYAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T16:04:36.335Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RegisterDTO.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DTOs\\RegisterDTO.cs",
-              "RelativeDocumentMoniker": "Document library\\DTOs\\RegisterDTO.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DTOs\\RegisterDTO.cs",
-              "RelativeToolTip": "Document library\\DTOs\\RegisterDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAB9AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T15:55:10.827Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Document library\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Document library\\Controllers\\AccountController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T15:50:42.044Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "BaseEntity.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DAL\\Entities\\BaseEntity.cs",
-              "RelativeDocumentMoniker": "Document library\\DAL\\Entities\\BaseEntity.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DAL\\Entities\\BaseEntity.cs",
-              "RelativeToolTip": "Document library\\DAL\\Entities\\BaseEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T15:08:01.858Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "User.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DAL\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "Document library\\DAL\\Entities\\User.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DAL\\Entities\\User.cs",
-              "RelativeToolTip": "Document library\\DAL\\Entities\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T14:45:18.564Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "S3Service.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Implementations\\S3Service.cs",
-              "RelativeDocumentMoniker": "Document library\\Services\\Implementations\\S3Service.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Implementations\\S3Service.cs",
-              "RelativeToolTip": "Document library\\Services\\Implementations\\S3Service.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAYwDAAAABGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T11:40:06.965Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Document.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DAL\\Entities\\Document.cs",
-              "RelativeDocumentMoniker": "Document library\\DAL\\Entities\\Document.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DAL\\Entities\\Document.cs",
-              "RelativeToolTip": "Document library\\DAL\\Entities\\Document.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAwwAoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-10T16:20:51.171Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IS3Service.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Interfaces\\IS3Service.cs",
-              "RelativeDocumentMoniker": "Document library\\Services\\Interfaces\\IS3Service.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Interfaces\\IS3Service.cs",
-              "RelativeToolTip": "Document library\\Services\\Interfaces\\IS3Service.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAQAAABWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-11T11:38:34.647Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\appsettings.json",
               "RelativeDocumentMoniker": "Document library\\appsettings.json",
               "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\appsettings.json",
               "RelativeToolTip": "Document library\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAcwBAAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAwAsAAAAKAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-09-10T16:44:15.106Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "DocumentDB.cs",
-              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DAL\\DocumentDB.cs",
-              "RelativeDocumentMoniker": "Document library\\DAL\\DocumentDB.cs",
-              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DAL\\DocumentDB.cs",
-              "RelativeToolTip": "Document library\\DAL\\DocumentDB.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAQwB0AAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-10T16:15:06.4Z",
+              "WhenOpened": "2024-09-12T14:42:17.098Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 4,
+              "Title": "IS3Service.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Interfaces\\IS3Service.cs",
+              "RelativeDocumentMoniker": "Document library\\Services\\Interfaces\\IS3Service.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Interfaces\\IS3Service.cs",
+              "RelativeToolTip": "Document library\\Services\\Interfaces\\IS3Service.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T14:10:03.64Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "DocumentController.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Controllers\\DocumentController.cs",
               "RelativeDocumentMoniker": "Document library\\Controllers\\DocumentController.cs",
               "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Controllers\\DocumentController.cs",
               "RelativeToolTip": "Document library\\Controllers\\DocumentController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABZAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAwwBQAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-10T16:12:57.961Z",
+              "WhenOpened": "2024-09-12T14:09:01.595Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Program.cs",
               "RelativeDocumentMoniker": "Document library\\Program.cs",
               "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Program.cs",
               "RelativeToolTip": "Document library\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACMAAAAAAAAAAAAIwDwAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-10T16:10:44.756Z",
+              "WhenOpened": "2024-09-12T14:02:26.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ILoggingService.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Interfaces\\ILoggingService.cs",
+              "RelativeDocumentMoniker": "Document library\\Services\\Interfaces\\ILoggingService.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Interfaces\\ILoggingService.cs",
+              "RelativeToolTip": "Document library\\Services\\Interfaces\\ILoggingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T14:00:43.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LoggingService.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Implementations\\LoggingService.cs",
+              "RelativeDocumentMoniker": "Document library\\Services\\Implementations\\LoggingService.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Implementations\\LoggingService.cs",
+              "RelativeToolTip": "Document library\\Services\\Implementations\\LoggingService.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAuwAgAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T14:00:25.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "S3Service.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Implementations\\S3Service.cs",
+              "RelativeDocumentMoniker": "Document library\\Services\\Implementations\\S3Service.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Implementations\\S3Service.cs",
+              "RelativeToolTip": "Document library\\Services\\Implementations\\S3Service.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAnwCoAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T13:57:18.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ServiceResult.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\ServiceResult.cs",
+              "RelativeDocumentMoniker": "Document library\\Services\\ServiceResult.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\ServiceResult.cs",
+              "RelativeToolTip": "Document library\\Services\\ServiceResult.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T13:55:02.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AccountService.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Implementations\\AccountService.cs",
+              "RelativeDocumentMoniker": "Document library\\Services\\Implementations\\AccountService.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Implementations\\AccountService.cs",
+              "RelativeToolTip": "Document library\\Services\\Implementations\\AccountService.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAewCAAAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T13:54:12.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "IAccountService.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Interfaces\\IAccountService.cs",
+              "RelativeDocumentMoniker": "Document library\\Services\\Interfaces\\IAccountService.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Services\\Interfaces\\IAccountService.cs",
+              "RelativeToolTip": "Document library\\Services\\Interfaces\\IAccountService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T13:53:50.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LoginDTO.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DTOs\\LoginDTO.cs",
+              "RelativeDocumentMoniker": "Document library\\DTOs\\LoginDTO.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\DTOs\\LoginDTO.cs",
+              "RelativeToolTip": "Document library\\DTOs\\LoginDTO.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAAAAcAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T13:52:29.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Document library\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\source\\repos\\Document library\\Document library\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Document library\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-12T13:50:15.943Z",
               "EditorCaption": ""
             }
           ]

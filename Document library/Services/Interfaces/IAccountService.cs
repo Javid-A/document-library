@@ -1,11 +1,9 @@
-﻿using Document_library.DTOs;
-
-namespace Document_library.Services.Interfaces
+﻿namespace Document_library.Services.Interfaces
 {
     public interface IAccountService
     {
-        Task RegisterAsync(RegisterDTO model);
-        Task<string> LoginAsync(string email, string password);
+        Task<ServiceResult> RegisterAsync(RegisterDTO model);
+        Task<ServiceResult<string>> LoginAsync(LoginDTO model);
         Task<UserDTO> GetUserAsync(string email);
     }
 }
