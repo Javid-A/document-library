@@ -27,11 +27,11 @@
                 if (entityEntry.State == EntityState.Added)
                 {
                     // Set CreatedAt only for newly added entities
-                    ((BaseEntity)entityEntry.Entity).CreatedAt = DateTime.Now;
+                    ((BaseEntity)entityEntry.Entity).CreatedAt = DateTime.UtcNow;
                 }
 
                 // Always set UpdatedAt for added or modified entities
-                ((BaseEntity)entityEntry.Entity).UpdatedAt = DateTime.Now;
+                ((BaseEntity)entityEntry.Entity).UpdatedAt = DateTime.UtcNow;
             }
         }
     }   

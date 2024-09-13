@@ -48,7 +48,8 @@ namespace Document_library.Services.Implementations
         {
             User? user = await userManager.FindByNameAsync(model.UserName);
 
-            if (user != null) return ServiceResult.Failed("User already exists");
+            // Check if user already exists or username is errors. Because it is reserved for errors folder in the system
+            if (user != null || model.UserName.Equals("errors",StringComparison.OrdinalIgnoreCase)) return ServiceResult.Failed("User already exists");
 
             user = new User
             {

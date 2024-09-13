@@ -7,6 +7,7 @@ using FluentValidation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Document_library.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,7 +18,10 @@ builder.Services.AddControllers();
 
 builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
 
-var awsCredentials = new BasicAWSCredentials(builder.Configuration["AWS:AccessKey"], builder.Configuration["AWS:SecretKey"]);
+var environmentAWSAccessKey = Environment.GetEnvironmentVariable(builder.Configuration["AWS:AccessKey"]!) ?? throw new ArgumentNullException("AWS Access Key is not provided");
+var environmentAWSSecretKey = Environment.GetEnvironmentVariable(builder.Configuration["AWS:SecretKey"]!) ?? throw new ArgumentNullException("AWS Secret Key is not provided");
+
+var awsCredentials = new BasicAWSCredentials(environmentAWSAccessKey, environmentAWSSecretKey);
 var s3client = new AmazonS3Client(awsCredentials, Amazon.RegionEndpoint.EUNorth1);
 builder.Services.AddSingleton<IAmazonS3>(s3client);
 
@@ -49,7 +53,7 @@ builder.Services.AddAuthentication(options =>
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<IS3Service, S3Service>();
-builder.Services.AddScoped<ILoggingService, LoggingService>();
+builder.Services.AddSingleton<ILoggerService, LoggerService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -61,7 +65,7 @@ builder.Services.AddSwaggerGen(c =>
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "JWT Authorization header using the Bearer scheme."
+        Description = "JWT Authorization header using the Bearer scheme.",
     });
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
@@ -79,6 +83,11 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.  
@@ -89,6 +98,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseExceptionHandler();
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -4,13 +4,13 @@ using Amazon.S3;
 
 namespace Document_library.Services.Implementations
 {
-    public class LoggingService(IAmazonS3 amazonS3) : ILoggingService
+    public class LoggerService(IAmazonS3 amazonS3) : ILoggerService
     {
         private readonly string _bucketName = "document-library-system";
         public async Task LogErrorAsync(string message, string stackTrace)
         {
             string content = string.Empty;
-            string fileContent = message + $"\t{DateTime.UtcNow.TimeOfDay:hh\\:mm\\:ss} \n{stackTrace ?? "There is no trace"}";
+            string fileContent = $"Time: {DateTime.UtcNow.TimeOfDay:hh\\:mm\\:ss}\n{message}\n{stackTrace ?? "There is no trace"}";
             string filePath = $"Errors/{DateTime.UtcNow:dd.MM.yyyy}.txt";
 
             var listRequest = new ListObjectsV2Request

@@ -2,7 +2,9 @@
 {
     public interface IS3Service
     {
-        Task<ServiceResult<IList<string>>> UploadFilesAsync(IFormFileCollection files,string userName);
-        Task<Stream> DownloadFileAsync(string key);
+        Task<ServiceResult<IList<string>>> UploadFilesAsync(IFormFileCollection files,string username);
+        Task<ServiceResult<DocumentResponse>> DownloadFileAsync(string fileName);
+        Task<ServiceResult<DocumentResponse>> DownloadFilesAsync(string[] fileNames);
+        Task<ServiceResult<string>> ShareFile(string fileName,string username, int expirationInHours);
     }
 }
