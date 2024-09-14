@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Document_library.Infrastructure;
+using Document_library.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,45 +17,20 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle  
 
-builder.Services.AddDefaultAWSOptions(builder.Configuration.GetAWSOptions());
-
-var environmentAWSAccessKey = Environment.GetEnvironmentVariable(builder.Configuration["AWS:AccessKey"]!) ?? throw new ArgumentNullException("AWS Access Key is not provided");
-var environmentAWSSecretKey = Environment.GetEnvironmentVariable(builder.Configuration["AWS:SecretKey"]!) ?? throw new ArgumentNullException("AWS Secret Key is not provided");
-
-var awsCredentials = new BasicAWSCredentials(environmentAWSAccessKey, environmentAWSSecretKey);
-var s3client = new AmazonS3Client(awsCredentials, Amazon.RegionEndpoint.EUNorth1);
-builder.Services.AddSingleton<IAmazonS3>(s3client);
+builder.Services.AddAwsS3Configuration(builder.Configuration);
 
 builder.Services.AddFluentValidationAutoValidation()
                 .AddFluentValidationClientsideAdapters()
                 .AddValidatorsFromAssemblyContaining<RegisterDTOValidator>();
 
 builder.Services.AddDbContext<DocumentDB>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("Default")));
-builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<DocumentDB>().AddDefaultTokenProviders();
 
-builder.Services.AddAuthentication(options =>
-{
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-})
-.AddJwtBearer(options =>
-{
-    options.TokenValidationParameters = new TokenValidationParameters
-    {
-        ValidateIssuer = true,
-        ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
-        ValidIssuer = builder.Configuration["Jwt:Issuer"],
-        ValidAudience = builder.Configuration["Jwt:Audience"],
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!)),
-        ClockSkew = TimeSpan.Zero
-    };
-});
+builder.Services.AddCustomAuthentication(builder.Configuration);
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddScoped<IS3Service, S3Service>();
-builder.Services.AddSingleton<ILoggerService, LoggerService>();
-builder.Services.AddScoped<IAccountService, AccountService>();
+
+builder.Services.AddCustomServices();
+
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new() { Title = "Document library", Version = "v1" });
@@ -85,6 +61,17 @@ builder.Services.AddSwaggerGen(c =>
 
 builder.Services.AddHttpContextAccessor();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:3000") 
+                  .AllowAnyMethod()
+                  .AllowAnyHeader();
+        });
+});
+
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
@@ -96,6 +83,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("AllowReactApp");
 
 app.UseHttpsRedirection();
 

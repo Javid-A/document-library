@@ -3,12 +3,13 @@
     public class ServiceResult<T>
     {
         public bool Succeeded { get; set; }
-        public T Data { get; set; }
-        public string Message { get; set; }
+        public T? Data { get; set; }
+        public int Status { get; set; }
+        public string? Message { get; set; }
         public string[] Errors { get; set; }
 
-        public static ServiceResult<T> Success(T data) => new() { Succeeded = true, Data = data};
-        public static ServiceResult<T> Failed(params string[] errors) => new() { Succeeded = false, Errors = errors };
+        public static ServiceResult<T> Success(T data) => new() { Succeeded = true, Status = StatusCodes.Status200OK, Data = data};
+        public static ServiceResult<T> Failed(params string[] errors) => new() { Succeeded = false, Status = StatusCodes.Status400BadRequest, Errors = errors};
         public ServiceResult() => Errors = [];
     }
 
@@ -16,9 +17,10 @@
     {
         public bool Succeeded { get; set; }
         public string[] Errors { get; set; }
-
-        public static ServiceResult Success() => new() { Succeeded = true};
-        public static ServiceResult Failed(params string[] errors) => new() { Succeeded = false, Errors = errors };
+        public int Status { get; set; }
+        public string? Message { get; set; }
+        public static ServiceResult Success() => new() { Succeeded = true, Status = StatusCodes.Status200OK};
+        public static ServiceResult Failed(params string[] errors) => new() { Succeeded = false, Status = StatusCodes.Status400BadRequest, Errors = errors };
         public ServiceResult() => Errors = [];
     }
     public static class ServiceResultExtensions
@@ -26,6 +28,11 @@
         public static ServiceResult<T> WithMessage<T>(this ServiceResult<T> result, string message)
         {
             result.Message = message;
+            return result;
+        }
+        public static ServiceResult<T> WithStatusCode<T>(this ServiceResult<T> result, int code)
+        {
+            result.Status = code;
             return result;
         }
     }
