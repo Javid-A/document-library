@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -6,20 +7,28 @@ using System.Security.Claims;
 
 namespace Document_library.Services.Implementations
 {
-    public class AccountService(IConfiguration configuration, UserManager<User> userManager) : IAccountService
+    public class AccountService(IHttpContextAccessor httpContextAccessor,IConfiguration configuration, UserManager<User> userManager) : IAccountService
     {
-        public Task<UserDTO> GetUserAsync(string email)
+        public async Task<ServiceResult<UserDTO>> GetLoggedUser(string username)
         {
-            throw new NotImplementedException();
+            User? existedUser = await userManager.FindByNameAsync(username);
+            if (existedUser == null) return ServiceResult<UserDTO>.Failed("User not found");
+            UserDTO mappedUser = new()
+            {
+                Email = existedUser.Email!,
+                Name = existedUser.UserName!
+            };
+
+            return ServiceResult<UserDTO>.Success(mappedUser);
         }
 
-        public async Task<ServiceResult<string>> LoginAsync(LoginDTO model)
+        public async Task<ServiceResult<UserDTO>> LoginAsync(LoginDTO model)
         {
             User? existedUser = await userManager.FindByEmailAsync(model.Email);
-            if (existedUser == null) return ServiceResult<string>.Failed("User not found");
+            if (existedUser == null) return ServiceResult<UserDTO>.Failed("Invalid password or email");
 
             bool isPasswordValid = await userManager.CheckPasswordAsync(existedUser, model.Password);
-            if (!isPasswordValid) return ServiceResult<string>.Failed("Invalid password or email");
+            if (!isPasswordValid) return ServiceResult<UserDTO>.Failed("Invalid password or email");
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(configuration["Jwt:Key"]!);
@@ -41,7 +50,30 @@ namespace Document_library.Services.Implementations
 
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
-            return ServiceResult<string>.Success(tokenHandler.WriteToken(token));
+            httpContextAccessor.HttpContext!.Response.Cookies.Append("token", tokenHandler.WriteToken(token), new CookieOptions
+            {
+                Expires = DateTime.UtcNow.AddMinutes(int.Parse(configuration["Jwt:ExpireMinutes"]!)),
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.None
+            });
+
+            return ServiceResult<UserDTO>.Success(new UserDTO
+            {
+                Email = existedUser.Email!,
+                Name = existedUser.UserName!
+            }).WithMessage("User logged in successfully");
+        }
+
+        public void LogOut()
+        {
+            httpContextAccessor.HttpContext!.Response.Cookies.Append("token", "", new CookieOptions
+            {
+                Expires = DateTime.UtcNow.AddDays(-1),
+                HttpOnly = true,
+                Secure = true,
+                SameSite = SameSiteMode.None
+            });
         }
 
         public async Task<ServiceResult> RegisterAsync(RegisterDTO model)
@@ -61,7 +93,7 @@ namespace Document_library.Services.Implementations
 
             if (!result.Succeeded) return ServiceResult.Failed(result.Errors.Select(x => x.Description).ToArray());
 
-            return ServiceResult.Success();
+            return ServiceResult.Success().WithMessage("User created successfully");
         }
     }
 }

@@ -35,5 +35,16 @@
             result.Status = code;
             return result;
         }
+
+        public static ServiceResult WithMessage(this ServiceResult result, string message)
+        {
+            result.Message = message;
+            return result;
+        }
+        public static ServiceResult WithStatusCode(this ServiceResult result, int code)
+        {
+            result.Status = code;
+            return result;
+        }
     }
 }

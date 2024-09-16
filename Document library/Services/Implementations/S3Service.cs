@@ -285,7 +285,7 @@ namespace Document_library.Services.Implementations
         /// <param name="fileName">The name of the file to share.</param>
         /// <param name="expirationInHours">The expiration time of the shareable link in hours.</param>
         /// <returns>The generated JWT token as a string.</returns>
-        public string GenerateShareToken(string fileName, int expirationInHours)
+        string GenerateShareToken(string fileName, int expirationInHours)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -312,7 +312,7 @@ namespace Document_library.Services.Implementations
         /// <param name="token">The JWT token used for authentication.</param>
         /// <param name="baseUrl">The base URL of the application.</param>
         /// <returns>The shareable link as a string.</returns>
-        public string GenerateShareableLink(string token, string baseUrl)
+        string GenerateShareableLink(string token, string baseUrl)
         {
             // Construct the shareable link manually
             var shareableLink = $"{baseUrl}/get-shared-file?token={token}";
@@ -334,7 +334,7 @@ namespace Document_library.Services.Implementations
         /// </summary>
         /// <param name="token">The JWT token to validate.</param>
         /// <returns>The <see cref="ClaimsPrincipal"/> representing the validated token.</returns>
-        public ClaimsPrincipal ValidateToken(string token)
+        ClaimsPrincipal ValidateToken(string token)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -357,13 +357,12 @@ namespace Document_library.Services.Implementations
 
             return tokenHandler.ValidateToken(token, validationParameters, out _);
         }
-
         public async Task<ServiceResult<IEnumerable<DocumentDTO>>> GetFiles(string username)
         {
             User? user = await userManager.FindByNameAsync(username);
-            if(user == null) return ServiceResult<IEnumerable<DocumentDTO>>.Failed("User not found");
+            if (user == null) return ServiceResult<IEnumerable<DocumentDTO>>.Failed("User not found");
 
-            IEnumerable<DocumentDTO> documents = await context.Documents.Where(d => d.UserId == user.Id).Select(d=>new DocumentDTO
+            IEnumerable<DocumentDTO> documents = await context.Documents.Where(d => d.UserId == user.Id).Select(d => new DocumentDTO
             {
                 Name = d.Name,
                 Path = d.Path,
@@ -375,5 +374,6 @@ namespace Document_library.Services.Implementations
 
             return ServiceResult<IEnumerable<DocumentDTO>>.Success(documents);
         }
+
     }
 }

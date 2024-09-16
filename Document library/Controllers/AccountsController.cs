@@ -1,4 +1,5 @@
 ﻿using Document_library.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Document_library.Controllers
 {
@@ -11,19 +12,36 @@ namespace Document_library.Controllers
         {
             ServiceResult result =  await accountService.RegisterAsync(model);
 
-            if (!result.Succeeded) return BadRequest(result.Errors);
+            if (!result.Succeeded) return BadRequest(result);
 
-            return Created();
+            return Ok(result);
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] LoginDTO model)
         {
-            ServiceResult<string> result = await accountService.LoginAsync(model);
+            ServiceResult<UserDTO> result = await accountService.LoginAsync(model);
+            if (!result.Succeeded) return BadRequest(result);
 
-            if (!result.Succeeded) return BadRequest(result.Errors);
+            return Ok(result);
+        }
 
-            return Ok(result.Data);
+        [HttpPost("logout")]
+        [Authorize]
+        public IActionResult Logout()
+        {
+            accountService.LogOut();
+            return Ok(ServiceResult.Success().WithMessage("User logged out successfully"));
+        }
+
+        [HttpGet("get-logged-user")]
+        [Authorize]
+        public async Task<IActionResult> GetLoggedUser()
+        {
+            ServiceResult<UserDTO> result = await accountService.GetLoggedUser(User.Identity!.Name!);
+            if (!result.Succeeded) return BadRequest(result);
+
+            return Ok(result);
         }
     }
 }

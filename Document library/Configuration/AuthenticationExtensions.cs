@@ -9,9 +9,13 @@ namespace Document_library.Configuration
         public static IServiceCollection AddCustomAuthentication(this IServiceCollection services, IConfiguration configuration)
         {
             // Add Identity services
-            services.AddIdentity<User, IdentityRole>()
-                .AddEntityFrameworkStores<DocumentDB>()
-                .AddDefaultTokenProviders();
+            services.AddIdentity<User, IdentityRole>(opt =>
+            {
+                opt.Password.RequireNonAlphanumeric = false;
+                opt.Password.RequireUppercase = false;
+                opt.Password.RequireLowercase = false;
+                opt.Password.RequireDigit = false;
+            }).AddEntityFrameworkStores<DocumentDB>().AddDefaultTokenProviders();
 
             // Configure Authentication with JWT
             services.AddAuthentication(options =>

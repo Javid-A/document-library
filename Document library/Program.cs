@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Document_library.Infrastructure;
 using Document_library.Configuration;
+using Document_library.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -67,6 +68,7 @@ builder.Services.AddCors(options =>
         policy =>
         {
             policy.WithOrigins("http://localhost:3000") 
+                  .AllowCredentials()
                   .AllowAnyMethod()
                   .AllowAnyHeader();
         });
@@ -86,6 +88,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseCors("AllowReactApp");
 
+app.UseMiddleware<TokenAuthenticationMiddleware>();
 app.UseHttpsRedirection();
 
 app.UseExceptionHandler();
