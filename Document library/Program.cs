@@ -60,10 +60,6 @@ builder.Services.AddSwaggerGen(c =>
     });
 });
 
-builder.Services.AddHttpContextAccessor();
-
-builder.Services.Configure<Api2PdfOptions>(builder.Configuration.GetSection("Api2Pdf"));
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp",

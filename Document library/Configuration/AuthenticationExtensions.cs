@@ -15,6 +15,7 @@ namespace Document_library.Configuration
                 opt.Password.RequireUppercase = false;
                 opt.Password.RequireLowercase = false;
                 opt.Password.RequireDigit = false;
+                opt.User.RequireUniqueEmail = true;
             }).AddEntityFrameworkStores<DocumentDB>().AddDefaultTokenProviders();
 
             // Configure Authentication with JWT

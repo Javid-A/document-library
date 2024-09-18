@@ -15,7 +15,7 @@ namespace Document_library.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DocumentsController(IS3Service s3Service,IOptions<Api2PdfOptions> options, IWebHostEnvironment env) : ControllerBase
+    public class DocumentsController(IS3Service s3Service) : ControllerBase
     {
         [HttpPost("upload")]
         [Authorize]
