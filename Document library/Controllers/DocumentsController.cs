@@ -1,17 +1,21 @@
 ﻿using Amazon.S3;
 using Amazon.S3.Model;
 using Amazon.S3.Util;
+using Document_library.Configuration;
 using Document_library.Services;
 using Document_library.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Newtonsoft.Json;
+using System.Net.Http;
 
 namespace Document_library.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DocumentsController(IS3Service s3Service) : ControllerBase
+    public class DocumentsController(IS3Service s3Service,IOptions<Api2PdfOptions> options, IWebHostEnvironment env) : ControllerBase
     {
         [HttpPost("upload")]
         [Authorize]
@@ -26,7 +30,7 @@ namespace Document_library.Controllers
         [Authorize]
         public async Task<IActionResult> DownloadFile([FromQuery]string fileName)
         {
-            ServiceResult<DocumentResponse> result = await s3Service.DownloadFileAsync(fileName,"javid");
+            ServiceResult<DocumentResponse> result = await s3Service.DownloadFileAsync(fileName, User.Identity!.Name!);
             if (!result.Succeeded) return BadRequest(result);
 
             return File(result.Data!.Stream,result.Data.ContentType,result.Data.Name);
@@ -41,9 +45,9 @@ namespace Document_library.Controllers
             return File(result.Data!.Stream, result.Data.ContentType, result.Data.Name);
         }
 
-        [HttpGet("download-multiple")]
+        [HttpPost("download-multiple")]
         [Authorize]
-        public async Task<IActionResult> DownloadFiles([FromQuery] string[] fileNames)
+        public async Task<IActionResult> DownloadFiles([FromBody] string[] fileNames)
         {
             ServiceResult<DocumentResponse> result = await s3Service.DownloadFilesAsync(fileNames, User.Identity!.Name!);
             if (!result.Succeeded) return BadRequest(result);
@@ -51,7 +55,7 @@ namespace Document_library.Controllers
             return File(result.Data!.Stream, result.Data.ContentType, result.Data.Name);
         }
 
-        [HttpGet("share")]
+        [HttpPost("share")]
         [Authorize]
         public async Task<IActionResult> ShareFile([FromQuery] string fileName, [FromQuery] int expirationInHours)
         {
@@ -79,5 +83,6 @@ namespace Document_library.Controllers
 
             return Ok(result);
         }
+
     }
 }
